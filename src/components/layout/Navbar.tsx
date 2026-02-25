@@ -29,9 +29,11 @@ export default function Navbar() {
     ? theme.palette.text.primary
     : theme.palette.text.primary;
 
+  // Added 'Certificates' to the navigation links
   const navLinks = [
     { label: 'Home', href: '#' },
     { label: 'About', href: '#about' },
+    { label: 'Certificates', href: '#certificates' }, // ← added here
     { label: 'Skills', href: '#skills' },
     { label: 'Projects', href: '#projects' },
     { label: 'Contact', href: '#contact' },
