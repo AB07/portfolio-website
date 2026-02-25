@@ -6,21 +6,21 @@ import { Launch as LaunchIcon } from '@mui/icons-material';
 // Your three certificates
 const certificates = [
   {
-    title: "Responsive Web Design",
+    title: "Free Code Camp Responsive Web Design",
     issuer: "freeCodeCamp",
     date: "Issued 2024",
     previewImage: "/assets/certificates/freeCodeCamp-responsive.jpg", // ← save your screenshot here
     fullLink: "https://freecodecamp.org/certification/fcce9fd9fa1-a272-45fa-b73f-f1cc0d967097/responsive-web-design",
   },
   {
-    title: "Introduction to Programming I",
+    title: "Digital Skills: Artificial Intelligence",
     issuer: "FutureLearn",
     date: "Issued 2024", // change date if needed
     previewImage: "/assets/certificates/futurelearn-gq09gm5.jpg", // ← save your screenshot here
     fullLink: "https://www.futurelearn.com/certificates/gq09gm5",
   },
   {
-    title: "Udacity Certificate",
+    title: "Android Developer Fundamentals",
     issuer: "Udacity",
     date: "Issued 2024", // change date if needed
     previewImage: "/assets/certificates/udacity-bd855f8c.jpg", // ← save your screenshot here
