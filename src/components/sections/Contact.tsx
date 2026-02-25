@@ -76,18 +76,19 @@ New message from portfolio:
 ${formData.message}
     `.trim();
 
-    // Copy to clipboard
-    navigator.clipboard.writeText(telegramMessage).then(() => {
-      setOpen(true);
-      setFormData({ name: '', email: '', message: '' });
-      setLoading(false);
-
-      // Automatically open Telegram web (user can paste & send)
-      window.open('https://t.me/Ab_dan01', '_blank');
-    }).catch(() => {
-      alert('Failed to copy message. Please copy manually.');
-      setLoading(false);
+    // Copy to clipboard (backup method)
+    navigator.clipboard.writeText(telegramMessage).catch(() => {
+      // Optional: silent fail if clipboard doesn't work
     });
+
+    // Open Telegram with the message pre-filled (deep link)
+    const telegramUrl = `https://t.me/Ab_dan01?text=${encodeURIComponent(telegramMessage)}`;
+    window.open(telegramUrl, '_blank');
+
+    // Show success toast
+    setOpen(true);
+    setFormData({ name: '', email: '', message: '' });
+    setLoading(false);
   };
 
   return (
@@ -128,7 +129,7 @@ ${formData.message}
                   variant="outlined"
                   size="large"
                   startIcon={<LinkedIn fontSize="large" />}
-                  href="https://www.linkedin.com/in/abenezer-daniel-a993a03a8/" // ← CHANGE TO YOUR REAL LINKEDIN URL
+                  href="https://www.linkedin.com/in/abenezer-daniel-a993a03a8/"
                   target="_blank"
                   rel="noopener noreferrer"
                   sx={{
@@ -147,7 +148,7 @@ ${formData.message}
                   variant="outlined"
                   size="large"
                   startIcon={<GitHub fontSize="large" />}
-                  href="https://github.com/AB07" // ← CHANGE IF NEEDED
+                  href="https://github.com/AB07"
                   target="_blank"
                   sx={{
                     width: '100%',
@@ -162,7 +163,7 @@ ${formData.message}
                   variant="outlined"
                   size="large"
                   startIcon={<Email fontSize="large" />}
-                  href="etechtube01@gmail.com" // ← CHANGE TO YOUR REAL EMAIL
+                  href="mailto:etechtube01@gmail.com"
                   sx={{
                     width: '100%',
                     maxWidth: 400,
@@ -238,7 +239,7 @@ ${formData.message}
                   {loading ? (
                     <CircularProgress size={24} color="inherit" />
                   ) : (
-                    'Copy & Open Telegram'
+                    'Send to Telegram'
                   )}
                 </Button>
               </Box>
@@ -255,7 +256,7 @@ ${formData.message}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       >
         <Alert severity="success" variant="filled" sx={{ width: '100%' }}>
-          Message copied to clipboard! Paste it in Telegram and send.
+          Message sent to Telegram! (pre-filled & ready to send)
         </Alert>
       </Snackbar>
     </Box>
